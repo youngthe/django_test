@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    {% for list in object_list %}
+
+    <li>{{ list.name }} {{ list.comment }} 
+
+        <!-- <a href="/study/delete/{{ list.pk }}"><input type="button" value="x" ></a>/ -->
+
+    <form action ="/study/delete/{{ list.pk }}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm">
+    </form>
+
+    </li>
+    {% empty %}
+    <li>empty list</li>
+    {% endfor %}
+
+    <form action="create" method="post">
+        {% csrf_token %}
+        <input type="text" name="name">
+        <input type="text" name="comment" maxlength="300">
+        <input type="submit"value="전송">
+    </form>
+
+     <a href="/study/login"><input type="button" value="로그인" ></a>
+</body>
+</html>

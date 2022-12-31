@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    title: {{ object.title }}<br>
+    published_date: {{ object.pub_date }}<br>
+    updated_date: {{ object.update_date }}<br>
+    content: {{ object.content }}<br>
+    image:    <img src="{{ object.img }}" alt=""><br>
+
+
+    <a href="{% url 'update' object.id %}">수정</a><br>
+    <a href="{% url 'delete' object.id %}">삭제</a></a>
+
+{% endblock %}

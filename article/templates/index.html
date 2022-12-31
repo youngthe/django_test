@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <a href="{% url 'create' %}">새글쓰기</a>
+
+    <h1>Notice List</h1>
+        {% for notice in object_list %}
+            <li>{{ notice.pub_date}} {{ notice.title }} <a href="{% url 'detail' notice.pk %}">내용보기</a></li>
+            {% empty %}
+            <li>empty notice</li>
+        {% endfor %}
+{% endblock %}
