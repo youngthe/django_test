@@ -26,6 +26,8 @@ class loginView(View):
         try:
             if(User.objects.filter(account=account).exists()):
                 PasswordHasher().verify(User.objects.get(account=account).pw, password)
+                print(account.id)
+                request.session['account'] = account.id
                 print("로그인 성공")
         except:
             print("비밀번호가 틀림")
